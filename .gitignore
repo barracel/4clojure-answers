@@ -1,0 +1,6 @@
+bin
+classes
+clojure.jar
+clojure-src.jar
+.project
+.classpath
