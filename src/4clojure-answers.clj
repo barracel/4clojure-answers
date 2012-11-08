@@ -420,6 +420,26 @@ reduce +
 
 
 
+; 85. Power Set
+; https://www.4clojure.com/problem/85
+; Write a function which generates the <a
+; href="http://en.wikipedia.org/wiki/Power_set">power set</a> of a given
+; set.  The power set of a set x is the set of all subsets of x,
+; including the empty set and x itself.
+
+(fn powerset 
+   ([coll] (powerset coll #{#{}}))
+   ([coll results]
+     	(if (seq coll)
+			(let [x (first coll) 
+                  ncoll (set (rest coll))
+              	  nresults (set (map #(conj % x) results))]
+   				(recur ncoll
+                  (clojure.set/union results nresults)))
+   			results)))
+
+
+
 ; 90. Cartesian Product
 ; https://www.4clojure.com/problem/90
 ; Write a function which calculates the <a
@@ -439,4 +459,13 @@ reduce +
 
 (fn [k dict] 
   (= (dict k true) nil))
+
+
+
+; 161. Subset and Superset
+; https://www.4clojure.com/problem/161
+; Set A is a subset of set B, or equivalently B is a superset of A, if A
+; is "contained" inside B. A and B may coincide.
+
+#{1 2}
 
