@@ -440,6 +440,27 @@ reduce +
 
 
 
+; 86. Happy numbers
+; https://www.4clojure.com/problem/86
+; Happy numbers are positive integers that follow a particular formula:
+; take each individual digit, square it, and then sum the squares to get
+; a new number. Repeat with the new number and eventually, you might get
+; to a number whose squared sum is 1. This is a happy number. An unhappy
+; number (or sad number) is one that loops endlessly. Write a function
+; that determines if a number is happy or not.
+
+(fn happy? [num] 
+  (letfn [(digits [x] (map #(-> % str read-string) (str x)))
+          (square [x] (map #(int (Math/pow % 2)) x))]
+    (loop [x num visited #{}]
+      (let [sum (reduce + (square (digits x)))]
+  	  (cond 
+          	(= 1 sum) true
+          	(contains? visited sum) false
+          	:else (recur sum (conj visited sum)))))))
+
+
+
 ; 90. Cartesian Product
 ; https://www.4clojure.com/problem/90
 ; Write a function which calculates the <a
