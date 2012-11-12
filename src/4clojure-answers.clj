@@ -420,6 +420,29 @@ reduce +
 
 
 
+; 84. Transitive Closure
+; https://www.4clojure.com/problem/84
+; Write a function which generates the <a
+; href="http://en.wikipedia.org/wiki/Transitive_closure">transitive
+; closure</a> of a <a
+; href="http://en.wikipedia.org/wiki/Binary_relation">binary
+; relation</a>.  The relation will be represented as a set of 2 item
+; vectors.
+
+(fn tclosure [coll]
+  (let [relations (into {} coll)]
+    (letfn 
+      [(find-path [src]
+                  (loop [x src paths #{}] 
+                    (if-let [dest (get relations x)]
+                      (recur dest (conj paths [src dest]))
+                      paths)))]
+      (reduce clojure.set/union
+              (for [elem (keys relations)] 
+                (find-path elem))))))
+
+
+
 ; 85. Power Set
 ; https://www.4clojure.com/problem/85
 ; Write a function which generates the <a
@@ -458,6 +481,19 @@ reduce +
           	(= 1 sum) true
           	(contains? visited sum) false
           	:else (recur sum (conj visited sum)))))))
+
+
+
+; 88. Symmetric Difference
+; https://www.4clojure.com/problem/88
+; Write a function which returns the symmetric difference of two sets.
+; The symmetric difference is the set of items belonging to one but not
+; both of the two sets.
+
+(fn sdiff [a b]
+  (clojure.set/union 
+   (clojure.set/difference a b)
+   (clojure.set/difference b a)))
 
 
 
