@@ -308,6 +308,31 @@ filter #(> (mod % 2) 0)
 
 
 
+; 40. Interpose a Seq
+; https://www.4clojure.com/problem/40
+; Write a function which separates the items of a sequence by an
+; arbitrary value.
+
+(fn myfunc [s coll] (rest (reduce #(into %1 [s %2]) [] coll)))
+
+
+
+; 41. Drop Every Nth Item
+; https://www.4clojure.com/problem/41
+; Write a function which drops every Nth item from a sequence.
+
+(fn myfunc [coll n] (keep-indexed #(if (> (mod (+ 1 %1) n) 0) %2) coll))
+
+
+
+; 42. Factorial Fun
+; https://www.4clojure.com/problem/42
+; Write a function which calculates factorials.
+
+#(apply * (range 1 (inc %)))
+
+
+
 ; 52. Intro to Destructuring
 ; https://www.4clojure.com/problem/52
 ; Let bindings and function parameter lists support destructuring.
