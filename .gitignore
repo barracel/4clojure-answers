@@ -4,3 +4,4 @@ clojure.jar
 clojure-src.jar
 .project
 .classpath
+.settings

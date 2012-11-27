@@ -1,2 +1,0 @@
-cmdhistory=["(clojure.contrib.seq/indexed [1 3])" "(map-indexed [\:a \:b])" "(map-indexed \#([%1 %2]) [\:a \:b])" "(map-indexed \#([%1]) [\:a \:b])" "(map-indexed \#(%1) [\:a \:b])"]
-eclipse.preferences.version=1
