@@ -333,6 +333,16 @@ filter #(> (mod % 2) 0)
 
 
 
+; 43. Reverse Interleave
+; https://www.4clojure.com/problem/43
+; Write a function which reverses the interleave process into x number
+; of subsequences.
+
+(fn foo [coll n]
+ (map #(take-nth n (drop % coll)) (range n)))
+
+
+
 ; 52. Intro to Destructuring
 ; https://www.4clojure.com/problem/52
 ; Let bindings and function parameter lists support destructuring.
