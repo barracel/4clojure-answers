@@ -429,6 +429,18 @@ filter #(> (mod % 2) 0)
 
 
 
+; 68. Recurring Theme
+; https://www.4clojure.com/problem/68
+; Clojure only has one non-stack-consuming looping construct: recur.
+; Either a function or a loop can be used as the recursion point.
+; Either way, recur rebinds the bindings of the recursion point to the
+; values it is passed.  Recur must be called from the tail-position, and
+; calling it elsewhere will result in an error.
+
+[7 6 5 4 3]
+
+
+
 ; 71. Rearranging Code: -&gt;
 ; https://www.4clojure.com/problem/71
 ; The -&gt; macro threads an expression x through a variable number of
@@ -554,10 +566,43 @@ reduce +
 
 
 
+; 145. For the win
+; https://www.4clojure.com/problem/145
+; Clojure's <a
+; href="http://clojuredocs.org/clojure_core/clojure.core/for">for</a>
+; macro is a tremendously versatile mechanism for producing a sequence
+; based on some other sequence(s). It can take some time to understand
+; how to use it properly, but that investment will be paid back with
+; clear, concise sequence-wrangling later. With that in mind, read over
+; these <code>for</code> expressions and try to see how each of them
+; produces the same result.
+
+(range 1 40 4)
+
+
+
+; 156. Map Defaults
+; https://www.4clojure.com/problem/156
+; When retrieving values from a map, you can specify default values in
+; case the key is not found:
+
+(fn [v coll] (reduce #(assoc %1 %2 v) {} coll))
+
+
+
 ; 161. Subset and Superset
 ; https://www.4clojure.com/problem/161
 ; Set A is a subset of set B, or equivalently B is a superset of A, if A
 ; is "contained" inside B. A and B may coincide.
 
 #{1 2}
+
+
+
+; 162. Logical falsity and truth
+; https://www.4clojure.com/problem/162
+; In Clojure, only nil and false representing the values of logical
+; falsity in conditional tests - anything else is logical truth.
+
+1
 
